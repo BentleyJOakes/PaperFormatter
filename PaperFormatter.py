@@ -146,8 +146,9 @@ class PaperFormatter:
                 print("Found image: " + full_image_name + ending)
                 #found_image = True
 
-
-                new_image_name = image_name.split("/")[-1]
+                new_image_name = str(self.image_num) + "-" + image_name.split("/")[-1]
+                self.image_num += 1
+                
                 shutil.copyfile(os.path.join(self.src_dir, image_name + ending), os.path.join(self.dest_dir, new_image_name + ending))
 
                 output_line.write(image_line.replace(image_name, new_image_name) + "\n")
